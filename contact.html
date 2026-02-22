@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Marina Glen Unit 51</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Professional Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Contact Hero with Video Background */
+        .contact-hero {
+            height: 60vh;
+            min-height: 400px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        /* Video Background */
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            animation: zoomIn 20s ease-out infinite alternate;
+        }
+
+        @keyframes zoomIn {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+
+        /* Content above video */
+        .contact-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+        }
+
+        .contact-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8),
+                         0 0 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .contact-hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.8),
+                         0 0 15px rgba(0, 0, 0, 0.6);
+        }
+
+        .contact-main {
+            padding: 6rem 0;
+            background: #F5E6D3;
+        }
+
+        .contact-intro {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .contact-intro h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #003D5B;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-intro p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #2c3e50;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        /* Contact Information Cards */
+        .contact-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 24px rgba(0, 105, 148, 0.2);
+        }
+
+        .contact-card-icon {
+            background: linear-gradient(135deg, #006994, #0090C1);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-card-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #003D5B;
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-card-content p {
+            color: #6C8299;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .contact-card-content a {
+            color: #006994;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .contact-card-content a:hover {
+            color: #FF8C42;
+        }
+
+        /* Contact Form */
+        .contact-form-container {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form-container h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #003D5B;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #003D5B;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #D4F1F4;
+            border-radius: 8px;
+            font-family: 'Lato', sans-serif;
+            font-size: 1rem;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #0090C1;
+            box-shadow: 0 0 0 3px rgba(0, 144, 193, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #FF8C42, #FF6B35);
+            color: white;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #FF6B35, #FF5722);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 140, 66, 0.4);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: white;
+            padding: 6rem 0;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: #F5E6D3;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            background: #D4F1F4;
+        }
+
+        .faq-question {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: #003D5B;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .faq-question i {
+            color: #006994;
+        }
+
+        .faq-answer {
+            color: #2c3e50;
+            line-height: 1.7;
+        }
+
+        /* Map Section */
+        .map-section {
+            background: #F5E6D3;
+            padding: 6rem 0;
+        }
+
+        .map-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 968px) {
+            .contact-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .contact-form-container {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" style="display: flex; align-items: center; gap: 1rem;">
+                <img src="../assets/css/images/general/logo.png" alt="Marina Glen Unit 51 Logo" style="height: 80px; width: auto;">
+                <h1>Unit 51 Marina Glen</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="services.html">Accomodation & Activities</a></li>
+                <li><a href="accommodation.html">Book Now</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Video Background -->
+    <section class="contact-hero">
+        <!-- Video Background -->
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="../assets/css/images/general/beach-video.mp4" type="video/mp4">
+            <source src="../assets/css/images/general/beach-video.webm" type="video/webm">
+            Your browser does not support video.
+        </video>
+        
+        <!-- Content -->
+        <div class="contact-hero-content">
+            <h1>Contact Us</h1>
+            <p>We're here to help make your stay at Marina Glen Unit 51 unforgettable</p>
+        </div>
+    </section>
+
+    <!-- Main Contact Section -->
+    <section class="contact-main">
+        <div class="container">
+            <div class="contact-intro">
+                <h2>Get In Touch</h2>
+                <p>Have questions about Marina Glen Unit 51? Want to check availability or need assistance with your booking? We're here to help! Reach out to us through any of the methods below, and we'll respond as quickly as possible.</p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Contact Information -->
+                <div class="contact-cards">
+                    <div class="contact-card">
+                        <div class="contact-card-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-card-content">
+                            <h3>Our Location</h3>
+                            <p>Marina Glen Unit 51<br>
+                            Marina Beach<br>
+                            South Coast, South Africa</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-card-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-card-content">
+                            <h3>Phone Numbers</h3>
+                            <p><a href="tel:+27782183986">+27 78 218 3986</a><br>
+                            <a href="tel:+27663968862">+27 66 396 8862</a></p>
+                            <p style="margin-top: 0.5rem; font-size: 0.9rem;">Available 9:00 AM - 8:00 PM</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-card-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-card-content">
+                            <h3>Email Addresses</h3>
+                            <p><a href="mailto:info@marinaglen.co.za">info@marinaglen.co.za</a><br>
+                            <a href="mailto:bookings@marinaglen.co.za">bookings@marinaglen.co.za</a></p>
+                            <p style="margin-top: 0.5rem; font-size: 0.9rem;">We respond within 24 hours</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-card-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-card-content">
+                            <h3>Check-in / Check-out</h3>
+                            <p><strong>Check-in:</strong> 2:00 PM<br>
+                            <strong>Check-out:</strong> 11:00 AM</p>
+                            <p style="margin-top: 0.5rem; font-size: 0.9rem;">Early check-in available on request</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-card-icon">
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                        <div class="contact-card-content">
+                            <h3>Follow Us</h3>
+                            <p>Stay connected for updates and special offers</p>
+                            <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                                <a href="#" style="font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
+                                <a href="#" style="font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                                <a href="#" style="font-size: 1.5rem;"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <h3>Send Us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <select id="subject" required>
+                                <option value="">Select a subject</option>
+                                <option value="booking">Booking Inquiry</option>
+                                <option value="availability">Check Availability</option>
+                                <option value="general">General Question</option>
+                                <option value="special">Special Request</option>
+                                <option value="feedback">Feedback</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Your Message *</label>
+                            <textarea id="message" required placeholder="Tell us how we can help you..."></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title center">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Quick answers to common questions</p>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <i class="fas fa-question-circle"></i>
+                        <span>What is the minimum stay requirement?</span>
+                    </div>
+                    <div class="faq-answer">
+                        The minimum stay at Marina Glen Unit 51 is 2 nights. During peak season (December - January), we may require a minimum of 5 nights.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <i class="fas fa-question-circle"></i>
+                        <span>Is parking available?</span>
+                    </div>
+                    <div class="faq-answer">
+                        Yes! We offer free on-site private parking with 24/7 security for all guests. One parking space is included with your booking.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <i class="fas fa-question-circle"></i>
+                        <span>Are pets allowed?</span>
+                    </div>
+                    <div class="faq-answer">
+                        Unfortunately, pets are not allowed at Marina Glen Unit 51 to maintain the comfort of all our guests.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <i class="fas fa-question-circle"></i>
+                        <span>Is WiFi included?</span>
+                    </div>
+                    <div class="faq-answer">
+                        WiFi is not included, but guests can arrange mobile data or use nearby facilities.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <i class="fas fa-question-circle"></i>
+                        <span>What is your cancellation policy?</span>
+                    </div>
+                    <div class="faq-answer">
+                        We offer free cancellation up to 14 days before arrival. Cancellations within 14 days may incur a fee. Please contact us for specific details.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <i class="fas fa-question-circle"></i>
+                        <span>How far is the nearest beach?</span>
+                    </div>
+                    <div class="faq-answer">
+                        Marina Beach is within walking distance, and the beautiful Southbroom Beach is just 1.8 km away - about a 5-minute drive.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2 class="section-title center">Find Us</h2>
+            <p class="section-subtitle">Marina Glen Unit 51 - Marina Beach, South Africa</p>
+
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14147.2!2d30.184847!3d-30.806538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef703c90c8f0001%3A0x1234567890abcdef!2sMarina%20Beach!5e0!3m2!1sen!2sza!4v1234567890"
+                    width="100%" 
+                    height="450" 
+                    style="border:0; border-radius: 15px;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Marina Glen Unit 51</h3>
+                    <p>Your perfect beach holiday resort</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="services.html">Accomodation & Activities</a></li>
+                        <li><a href="accommodation.html">Book Now</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="../admin-login.html">Admin</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="accommodation.html">Our Apartment</a></li>
+                        <li><a href="beaches.html">Nearby Beaches</a></li>
+                        <li><a href="activities.html">Activities</a></li>
+                        <li><a href="food.html">Dining</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i> Facebook</a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i> Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Marina Glen Unit 51. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

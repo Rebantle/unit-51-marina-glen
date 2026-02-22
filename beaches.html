@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nearby Beaches - Marina Glen Unit 51</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Professional Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Beaches Hero with Video Background */
+        .beaches-hero {
+            height: 60vh;
+            min-height: 400px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        /* Video Background */
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            animation: zoomIn 20s ease-out infinite alternate;
+        }
+
+        @keyframes zoomIn {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+
+        /* Content above video */
+        .beaches-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+        }
+
+        .beaches-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8),
+                         0 0 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .beaches-hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.8),
+                         0 0 15px rgba(0, 0, 0, 0.6);
+        }
+
+        .beaches-content {
+            padding: 6rem 0;
+            background: #F5E6D3;
+        }
+
+        .beach-intro {
+            max-width: 900px;
+            margin: 0 auto 4rem;
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .beach-intro h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #003D5B;
+            margin-bottom: 1.5rem;
+        }
+
+        .beach-intro p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #2c3e50;
+        }
+
+        .beaches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .beach-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .beach-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(0, 105, 148, 0.2);
+        }
+
+        .beach-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .beach-info {
+            padding: 2rem;
+        }
+
+        .beach-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #003D5B;
+            margin-bottom: 1rem;
+        }
+
+        .distance-badge {
+            display: inline-block;
+            background: #D4F1F4;
+            color: #006994;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .distance-badge i {
+            margin-right: 0.3rem;
+        }
+
+        .beach-info p {
+            color: #6C8299;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .beach-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-badge {
+            background: #F5E6D3;
+            color: #003D5B;
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .feature-badge i {
+            color: #006994;
+        }
+
+        .activities-section {
+            background: white;
+            padding: 6rem 0;
+        }
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .activity-card {
+            background: #D4F1F4;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .activity-card:hover {
+            background: #006994;
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .activity-icon {
+            font-size: 3rem;
+            color: #006994;
+            margin-bottom: 1rem;
+        }
+
+        .activity-card:hover .activity-icon {
+            color: white;
+        }
+
+        .activity-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: #003D5B;
+            margin-bottom: 0.8rem;
+        }
+
+        .activity-card:hover h4 {
+            color: white;
+        }
+
+        .activity-card p {
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        .activity-card:hover p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        @media (max-width: 768px) {
+            .beaches-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .beaches-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .beach-intro h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" style="display: flex; align-items: center; gap: 1rem;">
+                <img src="../assets/css/images/general/logo.png" alt="Marina Glen Unit 51 Logo" style="height: 80px; width: auto;">
+                <h1>Unit 51 Marina Glen</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="services.html">Accomodation & Activities</a></li>
+                <li><a href="accommodation.html">Book Now</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Video Background -->
+    <section class="beaches-hero">
+        <!-- Video Background -->
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="../assets/css/images/general/beach-video.mp4" type="video/mp4">
+            <source src="../assets/css/images/general/beach-video.webm" type="video/webm">
+            Your browser does not support video.
+        </video>
+        
+        <!-- Content -->
+        <div class="beaches-hero-content">
+            <h1>Nearby Beaches</h1>
+            <p>Discover pristine beaches just minutes from Marina Glen Unit 51</p>
+        </div>
+    </section>
+
+    <!-- Beaches Content -->
+    <section class="beaches-content">
+        <div class="container">
+            <div class="beach-intro">
+                <h2>Your Gateway to Paradise</h2>
+                <p>Marina Glen Unit 51 is perfectly located near some of South Africa's most beautiful beaches. Whether you're looking to relax on golden sands, swim in crystal-clear waters, or enjoy exciting water sports, our prime location offers easy access to stunning coastal destinations.</p>
+            </div>
+
+            <div class="beaches-grid">
+                <!-- Southbroom Beach -->
+                <div class="beach-card">
+                    <img src="../assets/css/images/beaches/southbroom-beach.jpg" alt="Southbroom Beach" class="beach-image">
+                    <div class="beach-info">
+                        <h3>Southbroom Beach</h3>
+                        <span class="distance-badge">
+                            <i class="fas fa-map-marker-alt"></i>
+                            1.8 km away
+                        </span>
+                        <p>The closest beach to Marina Glen, Southbroom Beach is a pristine stretch of golden sand perfect for families, swimmers, and sunbathers. Known for its clean waters and safe swimming conditions.</p>
+                        <div class="beach-features">
+                            <span class="feature-badge">
+                                <i class="fas fa-swimmer"></i>
+                                Safe Swimming
+                            </span>
+                            <span class="feature-badge">
+                                <i class="fas fa-users"></i>
+                                Family Friendly
+                            </span>
+                            <span class="feature-badge">
+                                <i class="fas fa-shower"></i>
+                                Facilities
+                            </span>
+                            <span class="feature-badge">
+                                <i class="fas fa-parking"></i>
+                                Parking
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Marina Beach -->
+                <div class="beach-card">
+                    <img src="../assets/css/images/beaches/marina-beach.jpg" alt="Marina Beach" class="beach-image">
+                    <div class="beach-info">
+                        <h3>Marina Beach</h3>
+                        <span class="distance-badge">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Walking distance
+                        </span>
+                        <p>Right at your doorstep! Marina Beach offers a quiet, intimate setting perfect for early morning walks, sunset views, and peaceful relaxation away from the crowds.</p>
+                        <div class="beach-features">
+                            <span class="feature-badge">
+                                <i class="fas fa-walking"></i>
+                                Walking Distance
+                            </span>
+                            <span class="feature-badge">
+                                <i class="fas fa-sun"></i>
+                                Sunset Views
+                            </span>
+                            <span class="feature-badge">
+                                <i class="fas fa-fish"></i>
+                                Rock Pools
+                            </span>
+                            <span class="feature-badge">
+                                <i class="fas fa-peace"></i>
+                                Quiet
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Margate Beach -->
+                <div class="beach-card">
+                    <img src="../assets/css/images/beaches/margate-beach.jpg" alt="Margate Beach" class="beach-image">
+                    <div class="beach-info">
+                        <h3>Margate Main Beach</h3>
+                        <span class="distance-badge">
+                            <i class="fas fa-map-marker-alt"></i>
+                            15 km away
+                        </span>
+                        <p>A popular beach destination with vibrant atmosphere, water sports activities, and beachfront restaurants. Perfect for those seeking more action and entertainment.</p>
+                        <div class="beach-features">
+                            <span class="feature-badge">
+                                <i class="fas fa-surfing"></i>
+                                Water Sports
+                            </span>
+                            <span class="feature-badge">
+                                <i class="fas fa-utensils"></i>
+                                Restaurants
+                            </span>
+                            <span class="feature-badge">
+                                <i class="fas fa-store"></i>
+                                Shops
+                            </span>
+                            <span class="feature-badge">
+                                <i class="fas fa-life-ring"></i>
+                                Lifeguards
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- San Lameer Beach -->
+                <div class="beach-card">
+                    <img src="../assets/css/images/beaches/san-lameer-beach.jpg" alt="San Lameer Beach" class="beach-image">
+                    <div class="beach-info">
+                        <h3>San Lameer Beach</h3>
+                        <span class="distance-badge">
+                            <i class="fas fa-map-marker-alt"></i>
+                            3 km away
+                        </span>
+                        <p>An exclusive beach within the San Lameer Resort. Known for its pristine conditions, excellent swimming, and beautiful natural surroundings. A hidden gem for beach lovers.</p>
+                        <div class="beach-features">
+                            <span class="feature-badge">
+                                <i class="fas fa-star"></i>
+                                Exclusive
+                            </span>
+                            <span class="feature-badge">
+                                <i class="fas fa-swimmer"></i>
+                                Great Swimming
+                            </span>
+                            <span class="feature-badge">
+                                <i class="fas fa-tree"></i>
+                                Natural Beauty
+                            </span>
+                            <span class="feature-badge">
+                                <i class="fas fa-camera"></i>
+                                Scenic
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beach Activities -->
+    <section class="activities-section">
+        <div class="container">
+            <h2 class="section-title center">Beach Activities</h2>
+            <p class="section-subtitle">Things to do at the beach during your stay</p>
+
+            <div class="activities-grid">
+                <div class="activity-card">
+                    <div class="activity-icon">
+                        <i class="fas fa-swimmer"></i>
+                    </div>
+                    <h4>Swimming</h4>
+                    <p>Safe swimming areas with warm Indian Ocean waters</p>
+                </div>
+
+                <div class="activity-card">
+                    <div class="activity-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h4>Surfing</h4>
+                    <p>Great waves for both beginners and experienced surfers</p>
+                </div>
+
+                <div class="activity-card">
+                    <div class="activity-icon">
+                        <i class="fas fa-fish"></i>
+                    </div>
+                    <h4>Fishing</h4>
+                    <p>Rock and surf fishing opportunities along the coast</p>
+                </div>
+
+                <div class="activity-card">
+                    <div class="activity-icon">
+                        <i class="fas fa-mask-snorkel"></i>
+                    </div>
+                    <h4>Snorkeling</h4>
+                    <p>Explore rock pools and marine life in clear waters</p>
+                </div>
+
+                <div class="activity-card">
+                    <div class="activity-icon">
+                        <i class="fas fa-walking"></i>
+                    </div>
+                    <h4>Beach Walks</h4>
+                    <p>Scenic coastal walks perfect for sunrise or sunset</p>
+                </div>
+
+                <div class="activity-card">
+                    <div class="activity-icon">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <h4>Sunbathing</h4>
+                    <p>Relax on pristine sands with year-round sunshine</p>
+                </div>
+
+                <div class="activity-card">
+                    <div class="activity-icon">
+                        <i class="fas fa-volleyball-ball"></i>
+                    </div>
+                    <h4>Beach Sports</h4>
+                    <p>Volleyball, frisbee, and other beach games</p>
+                </div>
+
+                <div class="activity-card">
+                    <div class="activity-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h4>Photography</h4>
+                    <p>Capture stunning coastal landscapes and sunsets</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <h2 class="section-title center">Ready to Book?</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>Location</h3>
+                            <p>Marina Glen Unit 51<br>Marina Beach, South Africa</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>Phone</h3>
+                            <p>+27 78 218 3986<br>+27 66 396 8862</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>Email</h3>
+                            <p>info@marinaglen.co.za<br>bookings@marinaglen.co.za</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>Check-in/out</h3>
+                            <p>Check-in: 2:00 PM<br>Check-out: 11:00 AM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Your Phone">
+                        </div>
+                        <div class="form-group">
+                            <textarea rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Marina Glen Unit 51</h3>
+                    <p>Your perfect beach holiday resort</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="services.html">Accomodation & Activities</a></li>
+                        <li><a href="accommodation.html">Book Now</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="../admin-login.html">Admin</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="accommodation.html">Our Apartment</a></li>
+                        <li><a href="beaches.html">Nearby Beaches</a></li>
+                        <li><a href="activities.html">Activities</a></li>
+                        <li><a href="food.html">Dining</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i> Facebook</a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i> Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Marina Glen Unit 51. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

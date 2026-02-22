@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 51 Marina Glen - Holiday Resort</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Professional Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Override hero height to 80vh */
+        .hero {
+            height: 80vh !important;
+            min-height: 500px !important;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Video Background Styles */
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            animation: zoomIn 20s ease-out infinite alternate;
+        }
+
+        /* Zoom In Animation */
+        @keyframes zoomIn {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+
+        /* Ensure content is above video */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .scroll-indicator {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Add strong text shadow for readability without overlay */
+        .hero-title {
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8),
+                         0 0 20px rgba(0, 0, 0, 0.6),
+                         0 0 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-subtitle {
+            text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.8),
+                         0 0 15px rgba(0, 0, 0, 0.6),
+                         0 0 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-buttons .btn {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" style="display: flex; align-items: center; gap: 1rem;">
+                <img src="assets/css/images/general/logo.png" alt="Marina Glen Unit 51 Logo" style="height: 80px; width: auto;">
+                <h1>Unit 51 Marina Glen</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="pages/services.html">Accomodation & Activities</a></li>
+                <li><a href="pages/accommodation.html">Book Now</a></li>
+                <li><a href="pages/contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Video Background - NO BLUE OVERLAY -->
+    <section class="hero">
+        <!-- Video Background -->
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="assets/css/images/general/beach-video.mp4" type="video/mp4">
+            <source src="assets/css/images/general/beach-video.webm" type="video/webm">
+            Your browser does not support video. Please update your browser.
+        </video>
+        
+        <!-- Content -->
+        <div class="hero-content">
+            <h1 class="hero-title">Unit 51 Marina Glen Holiday Resort</h1>
+            <p class="hero-subtitle">Your Perfect Beach Holiday Resort in Marina Beach</p>
+            <div class="hero-buttons">
+                <a href="pages/accommodation.html" class="btn btn-primary">Book Your Stay</a>
+                <a href="pages/services.html" class="btn btn-secondary">Explore Accomodation & Activities</a>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <span></span>
+        </div>
+    </section>
+
+    <!-- About Section with Real Image -->
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">Welcome to Marina Glen Unit 51</h2>
+                    <p>Experience the ultimate beach getaway at Marina Glen Unit 51, a stunning two-bedroom holiday apartment located in the heart of Marina Beach. Our 50 m² property features a public resort pool, fully equipped kitchen, and breathtaking ocean views.</p>
+                    <p>Whether you're seeking relaxation by the pool, adventures at nearby beaches, or simply a peaceful retreat with your loved ones, Marina Glen Unit 51 offers everything you need for an unforgettable holiday. The entire place is yours to enjoy!</p>
+                    <a href="pages/accommodation.html" class="btn btn-outline">View Our Apartment</a>
+                </div>
+                <div class="about-image">
+                    <img src="assets/css/images/general/about-property.jpg" alt="Marina Glen Unit 51 Property" style="width: 100%; height: 400px; object-fit: cover; border-radius: 20px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title center">Why Choose Marina Glen Unit 51</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-swimming-pool"></i>
+                    </div>
+                    <h3>Resort Pool</h3>
+                    <p>Enjoy access to a beautiful public resort pool for fun and relaxation</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </div>
+                    <h3>Beach Location</h3>
+                    <p>Just 1.8 km from Southbroom Beach with easy access to pristine sandy shores</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Entire Place Yours</h3>
+                    <p>Complete privacy in a spacious 50 m² apartment that sleeps up to 5 guests</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-parking"></i>
+                    </div>
+                    <h3>Free Parking</h3>
+                    <p>Complimentary on-site parking with 24/7 security for your peace of mind</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Preview -->
+    <section class="services-preview">
+        <div class="container">
+            <h2 class="section-title center">What We Offer</h2>
+            <p class="section-subtitle">Everything you need for the perfect holiday</p>
+            <div class="services-grid">
+                <a href="pages/accommodation.html" class="service-card">
+                    <div class="service-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-hotel"></i>
+                        </div>
+                    </div>
+                    <h3>Two-Bedroom Apartment</h3>
+                    <p>Resort pool, kitchen, and ocean view</p>
+                </a>
+                <a href="pages/beaches.html" class="service-card">
+                    <div class="service-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-water"></i>
+                        </div>
+                    </div>
+                    <h3>Nearby Beaches</h3>
+                    <p>Southbroom Beach just 1.8 km away</p>
+                </a>
+                <a href="pages/activities.html" class="service-card">
+                    <div class="service-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-hiking"></i>
+                        </div>
+                    </div>
+                    <h3>Activities & Attractions</h3>
+                    <p>Golf, nature reserves, and water parks</p>
+                </a>
+                <a href="pages/food.html" class="service-card">
+                    <div class="service-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                    </div>
+                    <h3>Dining Options</h3>
+                    <p>Full kitchen plus nearby restaurants</p>
+                </a>
+            </div>
+            <div class="center-button">
+                <a href="pages/services.html" class="btn btn-primary">View All Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <h2 class="section-title center">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>Location</h3>
+                            <p>Marina Glen Unit 51<br>Marina Beach, South Africa</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>Phone</h3>
+                            <p>+27 78 218 3986<br>+27 66 396 8862</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>Email</h3>
+                            <p>info@marinaglen.co.za<br>bookings@marinaglen.co.za</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>Check-in/out</h3>
+                            <p>Check-in: 2:00 PM<br>Check-out: 11:00 AM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" placeholder="Your Phone">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Marina Glen Unit 51</h3>
+                    <p>Your perfect beach holiday resort</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="pages/services.html">Accomodation & Activities</a></li>
+                        <li><a href="pages/accommodation.html">Book Now</a></li>
+                        <li><a href="pages/contact.html">Contact</a></li>
+                        <li><a href="admin-login.html">Admin</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="pages/accommodation.html">Our Apartment</a></li>
+                        <li><a href="pages/beaches.html">Nearby Beaches</a></li>
+                        <li><a href="pages/activities.html">Activities</a></li>
+                        <li><a href="pages/food.html">Dining</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i> Facebook</a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i> Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Marina Glen Unit 51. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

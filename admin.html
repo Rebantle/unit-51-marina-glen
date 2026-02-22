@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Marina Glen Unit 51</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Professional Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Admin Dashboard Specific Styles */
+        .admin-header {
+            background: linear-gradient(135deg, #003D5B 0%, #006994 100%);
+            padding: 8rem 0 4rem;
+            color: white;
+        }
+
+        .admin-header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .admin-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .admin-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        #logoutBtn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        #logoutBtn:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+        }
+
+        .admin-dashboard {
+            padding: 4rem 0;
+            background: #F5E6D3;
+            min-height: 80vh;
+        }
+
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 105, 148, 0.2);
+        }
+
+        .stat-icon {
+            background: linear-gradient(135deg, #006994, #0090C1);
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .stat-info h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #003D5B;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-info p {
+            color: #6C8299;
+            font-size: 1rem;
+        }
+
+        .bookings-section {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #003D5B;
+            margin: 0;
+        }
+
+        .admin-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .admin-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-refresh {
+            background: #0090C1;
+            color: white;
+        }
+
+        .btn-refresh:hover {
+            background: #006994;
+        }
+
+        .btn-export {
+            background: #02C39A;
+            color: white;
+        }
+
+        .btn-export:hover {
+            background: #019875;
+        }
+
+        .btn-clear {
+            background: #FF6B35;
+            color: white;
+        }
+
+        .btn-clear:hover {
+            background: #E85A2A;
+        }
+
+        /* Table Styles */
+        .bookings-table {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+        }
+
+        thead {
+            background: #003D5B;
+            color: white;
+        }
+
+        th {
+            padding: 1.2rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid #D4F1F4;
+            transition: background 0.2s ease;
+        }
+
+        tbody tr:hover {
+            background: #F5E6D3;
+        }
+
+        td {
+            padding: 1.2rem;
+            color: #2c3e50;
+        }
+
+        /* Status Dropdown */
+        .status-select {
+            padding: 0.4rem 0.8rem;
+            border: 2px solid #D4F1F4;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .status-select:focus {
+            border-color: #0090C1;
+            box-shadow: 0 0 0 3px rgba(0, 144, 193, 0.1);
+        }
+
+        .status-select.pending {
+            background: #FFF3CD;
+            color: #856404;
+        }
+
+        .status-select.confirmed {
+            background: #D1F2EB;
+            color: #0C5149;
+        }
+
+        .status-select.cancelled {
+            background: #F8D7DA;
+            color: #721C24;
+        }
+
+        .action-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            margin-right: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .view-btn {
+            background: #0090C1;
+            color: white;
+        }
+
+        .view-btn:hover {
+            background: #006994;
+        }
+
+        .delete-btn {
+            background: #FF6B35;
+            color: white;
+        }
+
+        .delete-btn:hover {
+            background: #E85A2A;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #6C8299;
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .admin-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .bookings-table {
+                overflow-x: scroll;
+            }
+
+            table {
+                min-width: 900px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- AUTH CHECK -->
+    <script>
+        function checkAdminAuth() {
+            const isLoggedIn = sessionStorage.getItem('adminLoggedIn');
+            const loginTime = sessionStorage.getItem('adminLoginTime');
+            
+            if (!isLoggedIn || isLoggedIn !== 'true') {
+                window.location.href = 'admin-login.html';
+                return;
+            }
+            
+            const currentTime = new Date().getTime();
+            const twoHours = 2 * 60 * 60 * 1000;
+            
+            if (currentTime - parseInt(loginTime) > twoHours) {
+                sessionStorage.removeItem('adminLoggedIn');
+                sessionStorage.removeItem('adminLoginTime');
+                alert('Session expired. Please login again.');
+                window.location.href = 'admin-login.html';
+                return;
+            }
+        }
+        
+        checkAdminAuth();
+    </script>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" style="display: flex; align-items: center; gap: 1rem;">
+                <img src="assets/css/images/general/logo.png" alt="Marina Glen Unit 51 Logo" style="height: 80px; width: auto;">
+                <h1>Unit 51 Marina Glen</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="pages/services.html">Accommodation & Activities</a></li>
+                <li><a href="pages/accommodation.html">Book Now</a></li>
+                <li><a href="pages/contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Admin Header -->
+    <section class="admin-header">
+        <div class="container">
+            <div class="admin-header-content">
+                <div>
+                    <h1><i class="fas fa-shield-alt"></i> Admin Dashboard</h1>
+                    <p>Manage bookings for Marina Glen Unit 51</p>
+                </div>
+                <button id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Dashboard -->
+    <section class="admin-dashboard">
+        <div class="container">
+            <!-- Dashboard Stats -->
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="totalBookings">0</h3>
+                        <p>Total Bookings</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="pendingBookings">0</h3>
+                        <p>Pending</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="confirmedBookings">0</h3>
+                        <p>Confirmed</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="totalRevenue">R0</h3>
+                        <p>Total Revenue</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bookings Section -->
+            <div class="bookings-section">
+                <div class="section-header">
+                    <h2>All Bookings</h2>
+                    <div class="admin-actions">
+                        <button id="refreshBookings" class="admin-btn btn-refresh">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                        <button id="exportBookings" class="admin-btn btn-export">
+                            <i class="fas fa-download"></i> Export CSV
+                        </button>
+                        <button id="clearAllBookings" class="admin-btn btn-clear">
+                            <i class="fas fa-trash-alt"></i> Clear All
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bookings-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Guest Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Check-in</th>
+                                <th>Check-out</th>
+                                <th>Guests</th>
+                                <th>Nights</th>
+                                <th>Total (R)</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bookingTableBody">
+                            <tr>
+                                <td colspan="11" class="empty-state">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <p>Loading bookings...</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Marina Glen Unit 51</h3>
+                    <p>Your perfect beach holiday resort</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="pages/services.html">Accommodation & Activities</a></li>
+                        <li><a href="pages/accommodation.html">Book Now</a></li>
+                        <li><a href="pages/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="pages/accommodation.html">Our Apartment</a></li>
+                        <li><a href="pages/beaches.html">Nearby Beaches</a></li>
+                        <li><a href="pages/activities.html">Activities</a></li>
+                        <li><a href="pages/food.html">Dining</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i> Facebook</a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i> Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Marina Glen Unit 51. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/admin.js"></script>
+    <script>
+        // Logout functionality
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            if (confirm('Are you sure you want to logout?')) {
+                sessionStorage.removeItem('adminLoggedIn');
+                sessionStorage.removeItem('adminLoginTime');
+                window.location.href = 'admin-login.html';
+            }
+        });
+
+        // Load bookings and update stats on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAllBookings();
+            updateDashboardStats();
+        });
+
+        function loadAllBookings() {
+            const bookings = JSON.parse(localStorage.getItem('marinaGlenBookings')) || [];
+            const tableBody = document.getElementById('bookingTableBody');
+            
+            if (bookings.length === 0) {
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="11" class="empty-state">
+                            <i class="fas fa-inbox"></i>
+                            <p>No bookings yet. Waiting for first booking...</p>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            tableBody.innerHTML = '';
+            bookings.forEach((booking, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>#${String(index + 1).padStart(3, '0')}</td>
+                    <td>${booking.firstName} ${booking.lastName}</td>
+                    <td>${booking.email}</td>
+                    <td>${booking.phone}</td>
+                    <td>${formatDate(booking.checkIn)}</td>
+                    <td>${formatDate(booking.checkOut)}</td>
+                    <td>${booking.guests}</td>
+                    <td>${booking.nights}</td>
+                    <td>R${booking.totalPrice.toLocaleString()}</td>
+                    <td>
+                        <select class="status-select ${booking.status.toLowerCase()}" onchange="updateBookingStatus(${index}, this.value)">
+                            <option value="Pending" ${booking.status === 'Pending' ? 'selected' : ''}>⏳ Pending</option>
+                            <option value="Confirmed" ${booking.status === 'Confirmed' ? 'selected' : ''}>✅ Confirmed</option>
+                            <option value="Cancelled" ${booking.status === 'Cancelled' ? 'selected' : ''}>❌ Cancelled</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button class="action-btn view-btn" onclick="viewBooking(${index})">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                        <button class="action-btn delete-btn" onclick="deleteBooking(${index})">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-ZA', { year: 'numeric', month: 'short', day: 'numeric' });
+        }
+
+        function updateBookingStatus(index, newStatus) {
+            const bookings = JSON.parse(localStorage.getItem('marinaGlenBookings')) || [];
+            bookings[index].status = newStatus;
+            localStorage.setItem('marinaGlenBookings', JSON.stringify(bookings));
+            
+            // Update the dropdown class
+            const select = event.target;
+            select.className = `status-select ${newStatus.toLowerCase()}`;
+            
+            updateDashboardStats();
+            
+            // Show confirmation
+            const statusEmoji = newStatus === 'Confirmed' ? '✅' : newStatus === 'Cancelled' ? '❌' : '⏳';
+            alert(`${statusEmoji} Booking status updated to: ${newStatus}`);
+        }
+
+        function updateDashboardStats() {
+            const bookings = JSON.parse(localStorage.getItem('marinaGlenBookings')) || [];
+            
+            document.getElementById('totalBookings').textContent = bookings.length;
+            
+            const pending = bookings.filter(b => b.status === 'Pending').length;
+            document.getElementById('pendingBookings').textContent = pending;
+            
+            const confirmed = bookings.filter(b => b.status === 'Confirmed').length;
+            document.getElementById('confirmedBookings').textContent = confirmed;
+            
+            const totalRevenue = bookings.reduce((sum, b) => sum + (b.totalPrice || 0), 0);
+            document.getElementById('totalRevenue').textContent = 'R' + totalRevenue.toLocaleString();
+        }
+
+        function viewBooking(index) {
+            const bookings = JSON.parse(localStorage.getItem('marinaGlenBookings')) || [];
+            const booking = bookings[index];
+            
+            const statusEmoji = booking.status === 'Confirmed' ? '✅' : booking.status === 'Cancelled' ? '❌' : '⏳';
+            
+            alert(`
+BOOKING DETAILS:
+
+Guest: ${booking.firstName} ${booking.lastName}
+Email: ${booking.email}
+Phone: ${booking.phone}
+Check-in: ${formatDate(booking.checkIn)}
+Check-out: ${formatDate(booking.checkOut)}
+Guests: ${booking.guests}
+Nights: ${booking.nights}
+Total: R${booking.totalPrice.toLocaleString()}
+Status: ${statusEmoji} ${booking.status}
+
+Special Requests:
+${booking.specialRequests || 'None'}
+            `);
+        }
+
+        function deleteBooking(index) {
+            if (confirm('Are you sure you want to delete this booking?')) {
+                const bookings = JSON.parse(localStorage.getItem('marinaGlenBookings')) || [];
+                bookings.splice(index, 1);
+                localStorage.setItem('marinaGlenBookings', JSON.stringify(bookings));
+                loadAllBookings();
+                updateDashboardStats();
+                alert('Booking deleted successfully!');
+            }
+        }
+
+        // Refresh bookings
+        document.getElementById('refreshBookings').addEventListener('click', function() {
+            loadAllBookings();
+            updateDashboardStats();
+            alert('Bookings refreshed!');
+        });
+
+        // Export bookings to CSV
+        document.getElementById('exportBookings').addEventListener('click', function() {
+            const bookings = JSON.parse(localStorage.getItem('marinaGlenBookings')) || [];
+            
+            if (bookings.length === 0) {
+                alert('No bookings to export!');
+                return;
+            }
+            
+            let csv = 'ID,Guest Name,Email,Phone,Check-in,Check-out,Guests,Nights,Total (R),Status,Special Requests\n';
+            
+            bookings.forEach((booking, index) => {
+                csv += `#${String(index + 1).padStart(3, '0')},`;
+                csv += `"${booking.firstName} ${booking.lastName}",`;
+                csv += `"${booking.email}",`;
+                csv += `"${booking.phone}",`;
+                csv += `"${booking.checkIn}",`;
+                csv += `"${booking.checkOut}",`;
+                csv += `${booking.guests},`;
+                csv += `${booking.nights},`;
+                csv += `${booking.totalPrice},`;
+                csv += `"${booking.status}",`;
+                csv += `"${booking.specialRequests || 'None'}"\n`;
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `marina-glen-bookings-${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+        });
+
+        // Clear all bookings
+        document.getElementById('clearAllBookings').addEventListener('click', function() {
+            if (confirm('Are you sure you want to delete ALL bookings? This cannot be undone!')) {
+                if (confirm('FINAL WARNING: This will permanently delete all booking data!')) {
+                    localStorage.removeItem('marinaGlenBookings');
+                    loadAllBookings();
+                    updateDashboardStats();
+                    alert('All bookings have been cleared!');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

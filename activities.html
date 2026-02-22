@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activities & Attractions - Marina Glen Unit 51</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Professional Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Activities Hero with Video Background */
+        .activities-hero {
+            height: 60vh;
+            min-height: 400px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        /* Video Background */
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            animation: zoomIn 20s ease-out infinite alternate;
+        }
+
+        @keyframes zoomIn {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+
+        /* Content above video */
+        .activities-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+        }
+
+        .activities-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8),
+                         0 0 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .activities-hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.8),
+                         0 0 15px rgba(0, 0, 0, 0.6);
+        }
+
+        .activities-content {
+            padding: 6rem 0;
+            background: #F5E6D3;
+        }
+
+        .activities-intro {
+            max-width: 900px;
+            margin: 0 auto 4rem;
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .activities-intro h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #003D5B;
+            margin-bottom: 1.5rem;
+        }
+
+        .activities-intro p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #2c3e50;
+        }
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .activity-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(0, 105, 148, 0.2);
+        }
+
+        .activity-image {
+            height: 250px;
+            background: linear-gradient(135deg, #0090C1, #006994);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            position: relative;
+        }
+
+        .activity-image i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .activity-image h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+        }
+
+        .activity-info {
+            padding: 2rem;
+        }
+
+        .distance-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #006994;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .distance-info i {
+            font-size: 1rem;
+        }
+
+        .activity-info p {
+            color: #6C8299;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .activity-features {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: #2c3e50;
+        }
+
+        .feature-item i {
+            color: #006994;
+            width: 20px;
+        }
+
+        .attractions-section {
+            background: white;
+            padding: 6rem 0;
+        }
+
+        .attractions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .attraction-card {
+            background: linear-gradient(135deg, #D4F1F4, #F5E6D3);
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .attraction-card:hover {
+            border-color: #006994;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 105, 148, 0.15);
+        }
+
+        .attraction-icon {
+            font-size: 3.5rem;
+            color: #006994;
+            margin-bottom: 1.5rem;
+        }
+
+        .attraction-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: #003D5B;
+            margin-bottom: 1rem;
+        }
+
+        .attraction-card p {
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        .distance-badge {
+            display: inline-block;
+            background: #006994;
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .activities-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .activities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .activities-intro h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" style="display: flex; align-items: center; gap: 1rem;">
+                <img src="../assets/css/images/general/logo.png" alt="Marina Glen Unit 51 Logo" style="height: 80px; width: auto;">
+                <h1>Unit 51 Marina Glen</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="services.html">Accomodation & Activities</a></li>
+                <li><a href="accommodation.html">Book Now</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Video Background -->
+    <section class="activities-hero">
+        <!-- Video Background -->
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="../assets/css/images/general/beach-video.mp4" type="video/mp4">
+            <source src="../assets/css/images/general/beach-video.webm" type="video/webm">
+            Your browser does not support video.
+        </video>
+        
+        <!-- Content -->
+        <div class="activities-hero-content">
+            <h1>Activities & Attractions</h1>
+            <p>Discover endless adventures and experiences near Marina Glen Unit 51</p>
+        </div>
+    </section>
+
+    <!-- Activities Content -->
+    <section class="activities-content">
+        <div class="container">
+            <div class="activities-intro">
+                <h2>Adventure Awaits</h2>
+                <p>From championship golf courses to nature reserves, water parks to cultural experiences, Marina Glen Unit 51 puts you at the center of South Coast's best attractions. Whether you seek adventure, relaxation, or family fun, there's something for everyone nearby.</p>
+            </div>
+
+            <div class="activities-grid">
+                <!-- Golf -->
+                <div class="activity-card">
+                    <div class="activity-image">
+                        <i class="fas fa-golf-ball"></i>
+                        <h3>Golf</h3>
+                    </div>
+                    <div class="activity-info">
+                        <div class="distance-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>5 km - Southbroom Golf Club</span>
+                        </div>
+                        <p>Play at the prestigious Southbroom Golf Club, an 18-hole championship course known for its stunning coastal views and challenging layout. Perfect for golfers of all skill levels.</p>
+                        <div class="activity-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>18-hole championship course</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Pro shop & equipment rental</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Clubhouse restaurant</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Ocean views</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nature Reserve -->
+                <div class="activity-card">
+                    <div class="activity-image">
+                        <i class="fas fa-tree"></i>
+                        <h3>Nature Reserve</h3>
+                    </div>
+                    <div class="activity-info">
+                        <div class="distance-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>12 km - Mbumbazi Nature Reserve</span>
+                        </div>
+                        <p>Explore the natural beauty of Mbumbazi Nature Reserve with hiking trails, bird watching, and indigenous coastal forest. A peaceful escape into nature.</p>
+                        <div class="activity-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Hiking & walking trails</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Bird watching</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Indigenous forest</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Wildlife spotting</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Water Park -->
+                <div class="activity-card">
+                    <div class="activity-image">
+                        <i class="fas fa-water"></i>
+                        <h3>Water Park</h3>
+                    </div>
+                    <div class="activity-info">
+                        <div class="distance-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>23 km - Wild Waves Water Park</span>
+                        </div>
+                        <p>Family fun at Wild Waves Water Park featuring thrilling water slides, lazy river, wave pool, and kids' play areas. Perfect for a full day of entertainment.</p>
+                        <div class="activity-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Water slides & attractions</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Wave pool</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Kids' play areas</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Food & refreshments</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Water Sports -->
+                <div class="activity-card">
+                    <div class="activity-image">
+                        <i class="fas fa-water"></i>
+                        <h3>Water Sports</h3>
+                    </div>
+                    <div class="activity-info">
+                        <div class="distance-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Nearby beaches</span>
+                        </div>
+                        <p>Experience exciting water sports including surfing, kayaking, paddleboarding, and jet skiing at nearby beaches. Equipment rental and lessons available.</p>
+                        <div class="activity-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Surfing & bodyboarding</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Kayaking & paddleboarding</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Equipment rental</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Lessons available</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fishing -->
+                <div class="activity-card">
+                    <div class="activity-image">
+                        <i class="fas fa-fish"></i>
+                        <h3>Fishing</h3>
+                    </div>
+                    <div class="activity-info">
+                        <div class="distance-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Coastal areas</span>
+                        </div>
+                        <p>Enjoy excellent fishing opportunities along the South Coast. Rock fishing, surf fishing, and deep-sea fishing charters available for all experience levels.</p>
+                        <div class="activity-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Rock & surf fishing</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Deep-sea charters</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Equipment available</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Guided trips</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Horse Riding -->
+                <div class="activity-card">
+                    <div class="activity-image">
+                        <i class="fas fa-horse"></i>
+                        <h3>Horse Riding</h3>
+                    </div>
+                    <div class="activity-info">
+                        <div class="distance-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Nearby stables</span>
+                        </div>
+                        <p>Experience beach and forest trail rides on horseback. Suitable for beginners and experienced riders, with guided tours through stunning coastal scenery.</p>
+                        <div class="activity-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Beach rides</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Forest trails</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>All skill levels</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Guided tours</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Attractions -->
+    <section class="attractions-section">
+        <div class="container">
+            <h2 class="section-title center">More Nearby Attractions</h2>
+            <p class="section-subtitle">Explore even more activities in the area</p>
+
+            <div class="attractions-grid">
+                <div class="attraction-card">
+                    <div class="attraction-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <h4>Shopping Centers</h4>
+                    <p>Visit nearby shopping malls and local markets for souvenirs, crafts, and essentials</p>
+                    <span class="distance-badge">10-15 km</span>
+                </div>
+
+                <div class="attraction-card">
+                    <div class="attraction-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h4>Spa & Wellness</h4>
+                    <p>Relax and rejuvenate at luxury spas offering massage and beauty treatments</p>
+                    <span class="distance-badge">5-10 km</span>
+                </div>
+
+                <div class="attraction-card">
+                    <div class="attraction-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h4>Scenic Viewpoints</h4>
+                    <p>Discover breathtaking coastal viewpoints perfect for photography and sunsets</p>
+                    <span class="distance-badge">Nearby</span>
+                </div>
+
+                <div class="attraction-card">
+                    <div class="attraction-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h4>Restaurants & Cafes</h4>
+                    <p>Enjoy diverse dining options from fresh seafood to international cuisine</p>
+                    <span class="distance-badge">Walking distance</span>
+                </div>
+
+                <div class="attraction-card">
+                    <div class="attraction-icon">
+                        <i class="fas fa-biking"></i>
+                    </div>
+                    <h4>Cycling Routes</h4>
+                    <p>Explore scenic coastal cycling paths and mountain biking trails</p>
+                    <span class="distance-badge">Nearby</span>
+                </div>
+
+                <div class="attraction-card">
+                    <div class="attraction-icon">
+                        <i class="fas fa-ship"></i>
+                    </div>
+                    <h4>Boat Cruises</h4>
+                    <p>Sunset cruises, dolphin watching, and fishing charters available</p>
+                    <span class="distance-badge">15 km</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <h2 class="section-title center">Need Activity Recommendations?</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>Location</h3>
+                            <p>Marina Glen Unit 51<br>Marina Beach, South Africa</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>Phone</h3>
+                            <p>+27 78 218 3986<br>+27 66 396 8862</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>Email</h3>
+                            <p>info@marinaglen.co.za<br>bookings@marinaglen.co.za</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>Check-in/out</h3>
+                            <p>Check-in: 2:00 PM<br>Check-out: 11:00 AM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Your Phone">
+                        </div>
+                        <div class="form-group">
+                            <textarea rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Marina Glen Unit 51</h3>
+                    <p>Your perfect beach holiday resort</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="services.html">Accomodation & Activities</a></li>
+                        <li><a href="accommodation.html">Book Now</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="../admin-login.html">Admin</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="accommodation.html">Our Apartment</a></li>
+                        <li><a href="beaches.html">Nearby Beaches</a></li>
+                        <li><a href="activities.html">Activities</a></li>
+                        <li><a href="food.html">Dining</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i> Facebook</a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i> Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Marina Glen Unit 51. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

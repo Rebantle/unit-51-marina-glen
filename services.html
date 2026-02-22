@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accommodation and Activities - Marina Glen Unit 51</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Professional Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Services Hero with Video Background */
+        .services-hero {
+            height: 60vh;
+            min-height: 400px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        /* Video Background */
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            animation: zoomIn 20s ease-out infinite alternate;
+        }
+
+        @keyframes zoomIn {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+
+        /* Content above video */
+        .services-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+        }
+
+        .services-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8),
+                         0 0 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .services-hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.8),
+                         0 0 15px rgba(0, 0, 0, 0.6);
+        }
+
+        /* FLIPPING CARD STYLES */
+        .services-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #F5E6D3 0%, #D4F1F4 100%);
+            min-height: 60vh;
+        }
+
+        .flip-cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Flip Card */
+        .flip-card {
+            background-color: transparent;
+            width: 100%;
+            height: 500px;
+            perspective: 1000px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        /* Default state - NOT flipped */
+        .flip-card-inner {
+            transform: rotateY(0deg);
+        }
+
+        /* Flipped state */
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        .flip-card-front {
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            transform: rotateY(0deg);
+        }
+
+        .flip-card-front:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(0, 105, 148, 0.2);
+        }
+
+        .flip-card-back {
+            background: linear-gradient(135deg, #006994 0%, #0090C1 100%);
+            color: white;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        /* Front Card Styling */
+        .service-icon-container {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #D4F1F4, #E8F4F8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .flip-card-front:hover .service-icon-container {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            color: #006994;
+            transition: all 0.3s ease;
+        }
+
+        .flip-card-front:hover .service-icon {
+            color: #0090C1;
+            transform: scale(1.1);
+        }
+
+        .flip-card-front h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.9rem;
+            color: #003D5B;
+            margin-bottom: 1rem;
+        }
+
+        .flip-card-front p {
+            font-size: 1.05rem;
+            color: #6C8299;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .flip-hint {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.5rem;
+            background: linear-gradient(135deg, #006994, #0090C1);
+            color: white;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .flip-card-front:hover .flip-hint {
+            background: linear-gradient(135deg, #0090C1, #00B4D8);
+            transform: scale(1.05);
+        }
+
+        .flip-hint i {
+            font-size: 1rem;
+        }
+
+        /* Back Card Styling */
+        .flip-card-back-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .flip-card-back h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .flip-card-back-description {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .flip-card-back ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        .flip-card-back ul li {
+            padding: 0.4rem 0;
+            padding-left: 1.8rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .flip-card-back ul li i {
+            position: absolute;
+            left: 0;
+            color: #FF8C42;
+            font-size: 1rem;
+        }
+
+        /* Buttons on Back */
+        .flip-card-buttons {
+            display: flex;
+            gap: 1rem;
+            width: 100%;
+            margin-top: 1rem;
+            flex-shrink: 0;
+        }
+
+        .read-more-btn,
+        .back-btn {
+            flex: 1;
+            padding: 0.9rem 1.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.85rem;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .read-more-btn {
+            background: white;
+            color: #006994;
+        }
+
+        .read-more-btn:hover {
+            background: #FF8C42;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 140, 66, 0.4);
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .back-btn:hover {
+            background: white;
+            color: #006994;
+            transform: translateY(-3px);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .services-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .flip-cards-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .flip-card {
+                height: 450px;
+            }
+
+            .flip-card-front h2,
+            .flip-card-back h3 {
+                font-size: 1.6rem;
+            }
+
+            .flip-card-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" style="display: flex; align-items: center; gap: 1rem;">
+                <img src="../assets/css/images/general/logo.png" alt="Marina Glen Unit 51 Logo" style="height: 80px; width: auto;">
+                <h1>Unit 51 Marina Glen</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="services.html" class="active">Accommodation & Activities</a></li>
+                <li><a href="accommodation.html">Book Now</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Video Background -->
+    <section class="services-hero">
+        <!-- Video Background -->
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="../assets/css/images/general/beach-video.mp4" type="video/mp4">
+            <source src="../assets/css/images/general/beach-video.webm" type="video/webm">
+            Your browser does not support video.
+        </video>
+        
+        <!-- Content -->
+        <div class="services-hero-content">
+            <h1>Accommodation and Activities</h1>
+            <p>Discover everything we offer to make your stay unforgettable. Click each card to learn more!</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="flip-cards-container">
+            <!-- Card 1: Two-Bedroom Apartment -->
+            <div class="flip-card" id="card1">
+                <div class="flip-card-inner">
+                    <!-- FRONT SIDE -->
+                    <div class="flip-card-front" onclick="flipCard('card1')">
+                        <div class="service-icon-container">
+                            <i class="fas fa-home service-icon"></i>
+                        </div>
+                        <h2>Two-Bedroom Apartment</h2>
+                        <p>Spacious 50 m² apartment with resort pool, kids playground and braai facility</p>
+                        <div class="flip-hint">
+                            <span>Learn More</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                    <!-- BACK SIDE -->
+                    <div class="flip-card-back">
+                        <div class="flip-card-back-content">
+                            <h3>Luxury Accommodation</h3>
+                            <p class="flip-card-back-description">Experience comfort and privacy in our beautifully designed apartment.</p>
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> Resort swimming pool</li>
+                                <li><i class="fas fa-check-circle"></i> Fully equipped kitchen</li>
+                                <li><i class="fas fa-check-circle"></i> Sleeps up to 4 guests</li>
+                                <li><i class="fas fa-check-circle"></i> Free parking & security</li>
+                            </ul>
+                        </div>
+                        <div class="flip-card-buttons">
+                            <a href="accommodation.html" class="read-more-btn">Read More</a>
+                            <button onclick="flipCard('card1')" class="back-btn">Back</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Nearby Beaches -->
+            <div class="flip-card" id="card2">
+                <div class="flip-card-inner">
+                    <!-- FRONT SIDE -->
+                    <div class="flip-card-front" onclick="flipCard('card2')">
+                        <div class="service-icon-container">
+                            <i class="fas fa-umbrella-beach service-icon"></i>
+                        </div>
+                        <h2>Nearby Beaches</h2>
+                        <p>Pristine beaches just minutes away from your doorstep</p>
+                        <div class="flip-hint">
+                            <span>Learn More</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                    <!-- BACK SIDE -->
+                    <div class="flip-card-back">
+                        <div class="flip-card-back-content">
+                            <h3>Beautiful Beaches</h3>
+                            <p class="flip-card-back-description">Discover stunning beaches with crystal-clear waters and golden sand.</p>
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> Southbroom Beach - 1.8 km</li>
+                                <li><i class="fas fa-check-circle"></i> Marina Beach - walking distance</li>
+                                <li><i class="fas fa-check-circle"></i> Safe swimming areas</li>
+                                <li><i class="fas fa-check-circle"></i> Beach activities available</li>
+                            </ul>
+                        </div>
+                        <div class="flip-card-buttons">
+                            <a href="beaches.html" class="read-more-btn">Read More</a>
+                            <button onclick="flipCard('card2')" class="back-btn">Back</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Activities & Attractions -->
+            <div class="flip-card" id="card3">
+                <div class="flip-card-inner">
+                    <!-- FRONT SIDE -->
+                    <div class="flip-card-front" onclick="flipCard('card3')">
+                        <div class="service-icon-container">
+                            <i class="fas fa-hiking service-icon"></i>
+                        </div>
+                        <h2>Activities & Attractions</h2>
+                        <p>Adventures and experiences for every type of traveler</p>
+                        <div class="flip-hint">
+                            <span>Learn More</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                    <!-- BACK SIDE -->
+                    <div class="flip-card-back">
+                        <div class="flip-card-back-content">
+                            <h3>Exciting Activities</h3>
+                            <p class="flip-card-back-description">From golf to nature reserves, endless adventures await.</p>
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> Southbroom Golf Club - 5 km</li>
+                                <li><i class="fas fa-check-circle"></i> Mbumbazi Nature Reserve</li>
+                                <li><i class="fas fa-check-circle"></i> Wild Waves Water Park</li>
+                                <li><i class="fas fa-check-circle"></i> Water sports & fishing</li>
+                            </ul>
+                        </div>
+                        <div class="flip-card-buttons">
+                            <a href="activities.html" class="read-more-btn">Read More</a>
+                            <button onclick="flipCard('card3')" class="back-btn">Back</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: Dining Options -->
+            <div class="flip-card" id="card4">
+                <div class="flip-card-inner">
+                    <!-- FRONT SIDE -->
+                    <div class="flip-card-front" onclick="flipCard('card4')">
+                        <div class="service-icon-container">
+                            <i class="fas fa-utensils service-icon"></i>
+                        </div>
+                        <h2>Dining Options</h2>
+                        <p>Full kitchen facilities plus nearby restaurants</p>
+                        <div class="flip-hint">
+                            <span>Learn More</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                    <!-- BACK SIDE -->
+                    <div class="flip-card-back">
+                        <div class="flip-card-back-content">
+                            <h3>Culinary Experience</h3>
+                            <p class="flip-card-back-description">Cook in your kitchen or explore local dining.</p>
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> Fully equipped kitchen</li>
+                                <li><i class="fas fa-check-circle"></i> Braai facilities on-site</li>
+                                <li><i class="fas fa-check-circle"></i> Nearby restaurants</li>
+                                <li><i class="fas fa-check-circle"></i> Fresh seafood available</li>
+                            </ul>
+                        </div>
+                        <div class="flip-card-buttons">
+                            <a href="food.html" class="read-more-btn">Read More</a>
+                            <button onclick="flipCard('card4')" class="back-btn">Back</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <h2 class="section-title center">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>Location</h3>
+                            <p>Marina Glen Unit 51<br>Marina Beach, South Africa</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>Phone</h3>
+                            <p>+27 78 218 3986<br>+27 66 396 8862</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>Email</h3>
+                            <p>info@marinaglen.co.za<br>bookings@marinaglen.co.za</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>Check-in/out</h3>
+                            <p>Check-in: 2:00 PM<br>Check-out: 11:00 AM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" placeholder="Your Phone">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Marina Glen Unit 51</h3>
+                    <p>Your perfect beach holiday resort</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="services.html">Accommodation & Activities</a></li>
+                        <li><a href="accommodation.html">Book Now</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="../admin-login.html">Admin</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="accommodation.html">Our Apartment</a></li>
+                        <li><a href="beaches.html">Nearby Beaches</a></li>
+                        <li><a href="activities.html">Activities</a></li>
+                        <li><a href="food.html">Dining</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i> Facebook</a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i> Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Marina Glen Unit 51. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script>
+        // Flip card function
+        function flipCard(cardId) {
+            const card = document.getElementById(cardId);
+            card.classList.toggle('flipped');
+        }
+    </script>
+</body>
+</html>

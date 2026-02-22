@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dining Options - Marina Glen Unit 51</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Professional Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Food Hero with Video Background */
+        .food-hero {
+            height: 60vh;
+            min-height: 400px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        /* Video Background */
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            animation: zoomIn 20s ease-out infinite alternate;
+        }
+
+        @keyframes zoomIn {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+
+        /* Content above video */
+        .food-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 2rem;
+        }
+
+        .food-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8),
+                         0 0 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .food-hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.8),
+                         0 0 15px rgba(0, 0, 0, 0.6);
+        }
+
+        .food-content {
+            padding: 6rem 0;
+            background: #F5E6D3;
+        }
+
+        .food-intro {
+            max-width: 900px;
+            margin: 0 auto 4rem;
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .food-intro h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #003D5B;
+            margin-bottom: 1.5rem;
+        }
+
+        .food-intro p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #2c3e50;
+        }
+
+        /* Kitchen Facilities Section */
+        .kitchen-section {
+            background: white;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            margin-bottom: 4rem;
+        }
+
+        .kitchen-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #003D5B;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .kitchen-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .kitchen-feature {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: #D4F1F4;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .kitchen-feature:hover {
+            background: #006994;
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .kitchen-feature i {
+            font-size: 2rem;
+            color: #006994;
+        }
+
+        .kitchen-feature:hover i {
+            color: white;
+        }
+
+        .kitchen-feature span {
+            font-weight: 600;
+            color: #003D5B;
+        }
+
+        .kitchen-feature:hover span {
+            color: white;
+        }
+
+        /* BBQ Section */
+        .bbq-section {
+            background: linear-gradient(135deg, #FF8C42, #FF6B35);
+            padding: 3rem;
+            border-radius: 20px;
+            color: white;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .bbq-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .bbq-section p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .bbq-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Restaurants Section */
+        .restaurants-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .restaurant-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .restaurant-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(0, 105, 148, 0.2);
+        }
+
+        .restaurant-image {
+            height: 220px;
+            background: linear-gradient(135deg, #0090C1, #006994);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .restaurant-image i {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .restaurant-info {
+            padding: 2rem;
+        }
+
+        .restaurant-info h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: #003D5B;
+            margin-bottom: 0.5rem;
+        }
+
+        .cuisine-type {
+            display: inline-block;
+            background: #D4F1F4;
+            color: #006994;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .restaurant-info p {
+            color: #6C8299;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .distance-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #006994;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        .distance-info i {
+            font-size: 1rem;
+        }
+
+        /* Local Markets Section */
+        .markets-section {
+            background: white;
+            padding: 6rem 0;
+        }
+
+        .markets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .market-card {
+            background: linear-gradient(135deg, #F5E6D3, #D4F1F4);
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .market-card:hover {
+            border-color: #006994;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 105, 148, 0.15);
+        }
+
+        .market-icon {
+            font-size: 3.5rem;
+            color: #006994;
+            margin-bottom: 1.5rem;
+        }
+
+        .market-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: #003D5B;
+            margin-bottom: 1rem;
+        }
+
+        .market-card p {
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .food-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .restaurants-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .food-intro h2 {
+                font-size: 2rem;
+            }
+
+            .kitchen-features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" style="display: flex; align-items: center; gap: 1rem;">
+                <img src="../assets/css/images/general/logo.png" alt="Marina Glen Unit 51 Logo" style="height: 80px; width: auto;">
+                <h1>Unit 51 Marina Glen</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="services.html">Accomodation & Activities</a></li>
+                <li><a href="accommodation.html">Book Now</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Video Background -->
+    <section class="food-hero">
+        <!-- Video Background -->
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="../assets/css/images/general/beach-video.mp4" type="video/mp4">
+            <source src="../assets/css/images/general/beach-video.webm" type="video/webm">
+            Your browser does not support video.
+        </video>
+        
+        <!-- Content -->
+        <div class="food-hero-content">
+            <h1>Dining Options</h1>
+            <p>Cook in your fully equipped kitchen or explore local culinary delights</p>
+        </div>
+    </section>
+
+    <!-- Food Content -->
+    <section class="food-content">
+        <div class="container">
+            <div class="food-intro">
+                <h2>Culinary Freedom</h2>
+                <p>Marina Glen Unit 51 gives you the best of both worlds - a fully equipped kitchen to prepare your own meals, or the option to explore the diverse dining scene in the surrounding area. From fresh seafood to international cuisine, the South Coast offers something for every palate.</p>
+            </div>
+
+            <!-- Kitchen Facilities -->
+            <div class="kitchen-section">
+                <h3>Fully Equipped Kitchen</h3>
+                <p style="text-align: center; color: #6C8299; margin-bottom: 2rem;">Everything you need to prepare delicious meals during your stay</p>
+                
+                <div class="kitchen-features">
+                    <div class="kitchen-feature">
+                        <i class="fas fa-fire-burner"></i>
+                        <span>Stove & Oven</span>
+                    </div>
+                    <div class="kitchen-feature">
+                        <i class="fas fa-temperature-low"></i>
+                        <span>Full-size Refrigerator</span>
+                    </div>
+                    <div class="kitchen-feature">
+                        <i class="fas fa-microwave"></i>
+                        <span>Microwave Oven</span>
+                    </div>
+                    <div class="kitchen-feature">
+                        <i class="fas fa-mug-hot"></i>
+                        <span>Kettle & Coffee Maker</span>
+                    </div>
+                    <div class="kitchen-feature">
+                        <i class="fas fa-utensils"></i>
+                        <span>Cookware & Utensils</span>
+                    </div>
+                    <div class="kitchen-feature">
+                        <i class="fas fa-plate-wheat"></i>
+                        <span>Dishes & Cutlery</span>
+                    </div>
+                    <div class="kitchen-feature">
+                        <i class="fas fa-bread-slice"></i>
+                        <span>Toaster</span>
+                    </div>
+                    <div class="kitchen-feature">
+                        <i class="fas fa-wine-glass"></i>
+                        <span>Glassware</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BBQ Section -->
+            <div class="bbq-section">
+                <div class="bbq-icon">
+                    <i class="fas fa-fire"></i>
+                </div>
+                <h3>Braai Facilities On-Site</h3>
+                <p>Enjoy outdoor dining with our Braai facilities! Perfect for grilling fresh seafood or enjoying a traditional South African braai under the stars. All equipment provided for your convenience.</p>
+            </div>
+
+            <!-- Nearby Restaurants -->
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; color: #003D5B; text-align: center; margin-bottom: 1rem;">Nearby Restaurants</h2>
+            <p style="text-align: center; color: #6C8299; margin-bottom: 3rem; font-size: 1.1rem;">Explore local dining options within easy reach</p>
+
+            <div class="restaurants-grid">
+                <!-- Seafood Restaurant -->
+                <div class="restaurant-card">
+                    <div class="restaurant-image">
+                        <i class="fas fa-fish"></i>
+                        <h4 style="color: white; margin: 0;">Seafood Restaurant</h4>
+                    </div>
+                    <div class="restaurant-info">
+                        <h4>Ocean Catch</h4>
+                        <span class="cuisine-type">Fresh Seafood</span>
+                        <p>Fresh local catch prepared with South Coast flavors. Specializing in line fish, prawns, calamari, and traditional seafood platters.</p>
+                        <div class="distance-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>2 km away</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Steakhouse -->
+                <div class="restaurant-card">
+                    <div class="restaurant-image">
+                        <i class="fas fa-drumstick-bite"></i>
+                        <h4 style="color: white; margin: 0;">Steakhouse</h4>
+                    </div>
+                    <div class="restaurant-info">
+                        <h4>The Grill House</h4>
+                        <span class="cuisine-type">Steaks & Grills</span>
+                        <p>Premium cuts and traditional South African braai. Perfect for meat lovers seeking quality steaks and ribs in a relaxed atmosphere.</p>
+                        <div class="distance-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>3 km away</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Italian Restaurant -->
+                <div class="restaurant-card">
+                    <div class="restaurant-image">
+                        <i class="fas fa-pizza-slice"></i>
+                        <h4 style="color: white; margin: 0;">Italian Cuisine</h4>
+                    </div>
+                    <div class="restaurant-info">
+                        <h4>La Bella Vista</h4>
+                        <span class="cuisine-type">Italian</span>
+                        <p>Authentic Italian dishes with ocean views. Fresh pasta, wood-fired pizzas, and classic Italian favorites in an elegant setting.</p>
+                        <div class="distance-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>5 km away</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Family Restaurant -->
+                <div class="restaurant-card">
+                    <div class="restaurant-image">
+                        <i class="fas fa-utensils"></i>
+                        <h4 style="color: white; margin: 0;">Family Dining</h4>
+                    </div>
+                    <div class="restaurant-info">
+                        <h4>Beachside Bistro</h4>
+                        <span class="cuisine-type">Family Friendly</span>
+                        <p>Casual dining with diverse menu options. Great for families with kids' menu, vegetarian options, and local favorites.</p>
+                        <div class="distance-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>2 km away</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cafe -->
+                <div class="restaurant-card">
+                    <div class="restaurant-image">
+                        <i class="fas fa-coffee"></i>
+                        <h4 style="color: white; margin: 0;">Cafe & Bakery</h4>
+                    </div>
+                    <div class="restaurant-info">
+                        <h4>Marina Cafe</h4>
+                        <span class="cuisine-type">Cafe & Breakfast</span>
+                        <p>Perfect for breakfast and light meals. Freshly baked goods, specialty coffee, and healthy breakfast options.</p>
+                        <div class="distance-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Walking distance</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Asian Restaurant -->
+                <div class="restaurant-card">
+                    <div class="restaurant-image">
+                        <i class="fas fa-bowl-rice"></i>
+                        <h4 style="color: white; margin: 0;">Asian Fusion</h4>
+                    </div>
+                    <div class="restaurant-info">
+                        <h4>Eastern Flavors</h4>
+                        <span class="cuisine-type">Asian Cuisine</span>
+                        <p>Authentic Asian dishes with a modern twist. Featuring Thai, Chinese, and Japanese favorites with fresh ingredients.</p>
+                        <div class="distance-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>4 km away</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Local Markets -->
+    <section class="markets-section">
+        <div class="container">
+            <h2 class="section-title center">Local Markets & Shops</h2>
+            <p class="section-subtitle">Stock up on fresh ingredients and local products</p>
+
+            <div class="markets-grid">
+                <div class="market-card">
+                    <div class="market-icon">
+                        <i class="fas fa-shopping-basket"></i>
+                    </div>
+                    <h4>Supermarkets</h4>
+                    <p>Major supermarket chains within 5 km offering all essentials, fresh produce, and groceries for your stay</p>
+                </div>
+
+                <div class="market-card">
+                    <div class="market-icon">
+                        <i class="fas fa-fish"></i>
+                    </div>
+                    <h4>Fresh Fish Market</h4>
+                    <p>Daily fresh catch from local fishermen. Get the freshest seafood to prepare in your kitchen or BBQ</p>
+                </div>
+
+                <div class="market-card">
+                    <div class="market-icon">
+                        <i class="fas fa-carrot"></i>
+                    </div>
+                    <h4>Farmer's Market</h4>
+                    <p>Weekend markets featuring fresh local produce, organic vegetables, and homemade products</p>
+                </div>
+
+                <div class="market-card">
+                    <div class="market-icon">
+                        <i class="fas fa-bread-slice"></i>
+                    </div>
+                    <h4>Local Bakery</h4>
+                    <p>Freshly baked bread, pastries, and treats daily. Perfect for breakfast and snacks</p>
+                </div>
+
+                <div class="market-card">
+                    <div class="market-icon">
+                        <i class="fas fa-wine-bottle"></i>
+                    </div>
+                    <h4>Wine & Liquor Store</h4>
+                    <p>Wide selection of South African wines, craft beers, and spirits for your enjoyment</p>
+                </div>
+
+                <div class="market-card">
+                    <div class="market-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h4>Convenience Stores</h4>
+                    <p>Quick access to essentials, snacks, and last-minute items within walking distance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <h2 class="section-title center">Need Dining Recommendations?</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>Location</h3>
+                            <p>Marina Glen Unit 51<br>Marina Beach, South Africa</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>Phone</h3>
+                            <p>+27 78 218 3986<br>+27 66 396 8862</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>Email</h3>
+                            <p>info@marinaglen.co.za<br>bookings@marinaglen.co.za</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="info-text">
+                            <h3>Check-in/out</h3>
+                            <p>Check-in: 2:00 PM<br>Check-out: 11:00 AM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Your Phone">
+                        </div>
+                        <div class="form-group">
+                            <textarea rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Marina Glen Unit 51</h3>
+                    <p>Your perfect beach holiday resort</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="services.html">Accomodation & Activities</a></li>
+                        <li><a href="accommodation.html">Book Now</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="../admin-login.html">Admin</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="accommodation.html">Our Apartment</a></li>
+                        <li><a href="beaches.html">Nearby Beaches</a></li>
+                        <li><a href="activities.html">Activities</a></li>
+                        <li><a href="food.html">Dining</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i> Facebook</a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i> Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Marina Glen Unit 51. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
